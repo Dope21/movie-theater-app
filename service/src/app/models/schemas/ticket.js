@@ -1,13 +1,13 @@
 import mongoose from 'mongoose'
 
-const ticketSeatSchema = mongoose.Schema({
+const ticketSeatSchema = new mongoose.Schema({
   seatType: { type: String, required: true },
   postion: { type: String, required: true },
 })
 
-const ticketSchema = mongoose.Schema({
-  userId: { type: mongoose.SchemaTypes.ObjectId, required: true, ref: 'User' },
-  showAt: { type: mongoose.SchemaTypes.ObjectId, required: true, ref: 'MovieShowTime' },
+const ticketSchema = new mongoose.Schema({
+  userId: { type: mongoose.SchemaTypes.ObjectId, required: true, ref: 'users' },
+  showAt: { type: mongoose.SchemaTypes.ObjectId, required: true, ref: 'movieshowtimes' },
   seats: { type: [ticketSeatSchema], required: true },
   totalSeat: { type: Number, required: true },
   totalPrices: { type: Number, required: true },
