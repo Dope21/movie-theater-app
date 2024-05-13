@@ -8,7 +8,7 @@ const ticketSeatSchema = mongoose.Schema({
 const ticketSchema = mongoose.Schema({
   userId: { type: mongoose.SchemaTypes.ObjectId, required: true, ref: 'User' },
   showAt: { type: mongoose.SchemaTypes.ObjectId, required: true, ref: 'MovieShowTime' },
-  seats: [ticketSeatSchema],
+  seats: { type: [ticketSeatSchema], required: true },
   totalSeat: { type: Number, required: true },
   totalPrices: { type: Number, required: true },
 })

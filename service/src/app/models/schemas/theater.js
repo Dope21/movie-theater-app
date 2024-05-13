@@ -1,7 +1,7 @@
 import mongoose from 'mongoose'
 
 const seatSchema = new mongoose.Schema({
-  type: { type: mongoose.SchemaTypes.ObjectId, ref: 'seatType', required: true },
+  type: { type: mongoose.SchemaTypes.ObjectId, required: true, ref: 'SeatType' },
   position: { type: String, required: true },
 })
 
@@ -12,18 +12,10 @@ const TheaterTypeEnum = {
   IMAX: 'IMAX',
 }
 
-const theaterTypeSchema = new mongoose.Schema({
-  type: {
-    type: String,
-    enum: Object.values(TheaterTypeEnum),
-    required: true,
-  },
-})
-
 const theaterSchema = new mongoose.Schema({
   number: { type: Number, required: true },
-  type: { type: theaterTypeSchema, required: true },
-  seat: [seatSchema],
+  type: { type: String, enum: Object.values(TheaterTypeEnum), required: true },
+  seat: { type: [seatSchema], required: true },
 }, {
   versionKey: false,
   timestamps: true,
