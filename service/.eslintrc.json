@@ -1,0 +1,21 @@
+{
+  "extends": "airbnb-base",
+  "parserOptions": {
+    "ecmaVersion": "latest"
+  },
+  "plugins": ["import"],
+  "rules": {
+    "no-unused-expressions": "off",
+    "max-len": "off",
+    "semi": ["error", "never"],
+    "no-console": ["error", { "allow": ["log", "error", "warn"] }],
+    "no-underscore-dangle": ["off"],
+    "import/order": [
+      "error",
+      {
+        "groups": ["builtin", "external", "parent", "sibling", "index"],
+        "newlines-between": "always"
+      }
+    ]
+  }
+}
