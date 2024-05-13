@@ -6,6 +6,7 @@ const movieShowTimeSchema = mongoose.Schema({
   date: { type: Date, required: true },
   startTime: { type: String, required: true },
   endTime: { type: String, required: true },
+  bookedSeat: { type: Set, default: new Set() },
 }, {
   versionKey: false,
   timestamps: true,
