@@ -8,6 +8,6 @@ const seatTypeSchema = new mongoose.Schema({
   timeseries: true,
 })
 
-const SeatTypeModel = mongoose.model('SeatType', seatTypeSchema)
+const SeatTypeModel = mongoose.model('seattypes', seatTypeSchema)
 
 export default SeatTypeModel

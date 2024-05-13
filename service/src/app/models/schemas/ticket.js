@@ -13,6 +13,6 @@ const ticketSchema = mongoose.Schema({
   totalPrices: { type: Number, required: true },
 })
 
-const TicketModel = mongoose.model('Ticket', ticketSchema)
+const TicketModel = mongoose.model('tickets', ticketSchema)
 
 export default TicketModel
