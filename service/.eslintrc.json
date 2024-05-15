@@ -5,6 +5,7 @@
   },
   "plugins": ["import"],
   "rules": {
+    "no-unused-vars": ["error", { "argsIgnorePattern": "^_" }],
     "no-unused-expressions": "off",
     "max-len": "off",
     "semi": ["error", "never"],
