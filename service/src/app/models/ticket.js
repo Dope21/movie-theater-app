@@ -1,10 +1,14 @@
+import mongoose from 'mongoose'
+
 import stringToObjectId from '../libs/stringToObjectId'
 
-import Ticket from './schemas/ticket'
+import ticketSchema from './schemas/ticket'
 
-const create = (data, options) => Ticket.create(data, options)
+const model = mongoose.model('tickets', ticketSchema)
 
-const findBookedSeatsByShowTimeId = (showTimeId) => Ticket.aggregate([
+const create = (data, options) => model.create(data, options)
+
+const findBookedSeatsByShowTimeId = (showTimeId) => model.aggregate([
   { $match: { showAt: stringToObjectId(showTimeId) } },
   { $unwind: '$seats' },
   {

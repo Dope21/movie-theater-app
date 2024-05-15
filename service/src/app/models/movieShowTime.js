@@ -1,8 +1,12 @@
+import mongoose from 'mongoose'
+
 import stringToObjectId from '../libs/stringToObjectId'
 
-import MovieShowTime from './schemas/movieShowTime'
+import movieShowTimeSchema from './schemas/movieShowTime'
 
-const findShowDatesByMovieId = (movieId) => MovieShowTime.aggregate([
+const model = mongoose.model('movieshowtimes', movieShowTimeSchema)
+
+const findShowDatesByMovieId = (movieId) => model.aggregate([
   { $match: { movieId: stringToObjectId(movieId), date: { $gte: new Date() } } },
   {
     $group: {
@@ -12,7 +16,7 @@ const findShowDatesByMovieId = (movieId) => MovieShowTime.aggregate([
   },
 ])
 
-const findShowTimeInAllTheaters = (movieId, date) => MovieShowTime.aggregate([
+const findShowTimeInAllTheaters = (movieId, date) => model.aggregate([
   {
     $match: {
       movieId: stringToObjectId(movieId),

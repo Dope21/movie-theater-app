@@ -1,8 +1,12 @@
+import mongoose from 'mongoose'
+
 import stringToObjectId from '../libs/stringToObjectId'
 
-import Theater from './schemas/theater'
+import theaterSchema from './schemas/theater'
 
-const findTheaterWithSeatTypeById = (id) => Theater.aggregate([
+const model = mongoose.model('theaters', theaterSchema)
+
+const findTheaterWithSeatTypeById = (id) => model.aggregate([
   { $match: { _id: stringToObjectId(id) } },
   { $unwind: '$seats' },
   {

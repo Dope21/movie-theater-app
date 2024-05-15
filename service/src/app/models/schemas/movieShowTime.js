@@ -11,6 +11,4 @@ const movieShowTimeSchema = new mongoose.Schema({
   timestamps: true,
 })
 
-const MovieShowTimeModel = mongoose.model('movieshowtimes', movieShowTimeSchema)
-
-export default MovieShowTimeModel
+export default movieShowTimeSchema

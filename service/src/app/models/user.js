@@ -1,6 +1,10 @@
-import User from './schemas/user'
+import mongoose from 'mongoose'
 
-const findOne = (query, fields = {}, options = {}) => User.findOne(query, fields, options).lean()
+import userSchema from './schemas/user'
+
+const model = mongoose.model('users', userSchema)
+
+const findOne = (query, fields = {}, options = {}) => model.findOne(query, fields, options).lean()
 
 export default {
   findOne,

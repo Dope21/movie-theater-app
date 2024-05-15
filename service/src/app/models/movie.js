@@ -1,8 +1,12 @@
-import Movie from './schemas/movie'
+import mongoose from 'mongoose'
 
-const find = (query, fields = {}, options = {}) => Movie.find(query, fields, options).lean()
+import movieSchema from './schemas/movie'
 
-const findOne = (query, fields = {}, options = {}) => Movie.findOne(query, fields, options).lean()
+const model = mongoose.model('movies', movieSchema)
+
+const find = (query, fields = {}, options = {}) => model.find(query, fields, options).lean()
+
+const findOne = (query, fields = {}, options = {}) => model.findOne(query, fields, options).lean()
 
 export default {
   find,
