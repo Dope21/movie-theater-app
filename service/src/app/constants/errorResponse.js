@@ -6,11 +6,11 @@ export default {
   GET_USER_BY_ID_NOT_FOUND: {
     httpStatus: 404,
     serviceCode: 'GET_USER_BY_ID_NOT_FOUND',
-    message: 'User Not Found.',
+    description: 'User Not Found.',
   },
   GET_MOVIE_BY_ID_NOT_FOUND: {
     httpStatus: 404,
     serverCode: 'GET_USER_BY_ID_NOT_FOUND',
-    message: 'Movie Not Found.',
+    description: 'Movie Not Found.',
   },
 }
