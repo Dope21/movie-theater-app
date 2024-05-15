@@ -1,7 +1,7 @@
-import userController from './user'
-import movieController from './movie'
+import user from './user'
+import movie from './movie'
 
 export default {
-  userController,
-  movieController,
+  user,
+  movie,
 }
