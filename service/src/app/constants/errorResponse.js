@@ -10,7 +10,17 @@ export default {
   },
   GET_MOVIE_BY_ID_NOT_FOUND: {
     httpStatus: 404,
-    serverCode: 'GET_USER_BY_ID_NOT_FOUND',
+    serviceCode: 'GET_USER_BY_ID_NOT_FOUND',
     description: 'Movie Not Found.',
+  },
+  GET_THEATER_BY_ID_NOT_FOUND: {
+    httpStatus: 404,
+    serviceCode: 'GET_THEATER_BY_ID_NOT_FOUND',
+    description: 'Theater Not Found.',
+  },
+  CREATE_ORDER_DUPLICATE_SEAT: {
+    httpStatus: 400,
+    serviceCode: 'CREATE_ORDER_DUPLICATE_SEAT',
+    description: 'Seat Not Avaiable',
   },
 }
