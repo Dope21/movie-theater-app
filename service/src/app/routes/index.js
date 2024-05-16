@@ -8,5 +8,7 @@ router
   .get('/users/:id', controllers.user.getById)
   .get('/movies', controllers.movie.getAll)
   .get('/movies/:id', controllers.movie.getById)
+  .get('/movies/:movieId/showtime/dates', controllers.movieShowTime.getShowDatesByMovieId)
+  .get('/movies/:movieId/showtime/:date/theaters', controllers.movieShowTime.getShowTimesInAllTheater)
 
 export default router

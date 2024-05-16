@@ -1,5 +1,5 @@
 import userModel from '../models/user'
-import catchResponse from '../libs/catchResponse'
+import { catchResponse } from '../libs/resErrorHandling'
 import ERROR_RESPONSE from '../constants/errorResponse'
 
 const getById = async (req, res) => {
