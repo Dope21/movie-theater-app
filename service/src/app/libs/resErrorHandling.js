@@ -1,6 +1,5 @@
+import 'express-async-errors'
 import ERROR_RESPONSE from '../constants/errorResponse'
-
-require('express-async-errors')
 
 class ResponseError extends Error {
   constructor({
@@ -16,9 +15,9 @@ class ResponseError extends Error {
   }
 }
 
-const catchResponse = (error) => {
+export const errorMiddleware = (err, req, res, _next) => res.status(err.httpStatus).json(err)
+
+export const catchResponse = (error) => {
   const errorData = error.serviceCode ? error : { ...ERROR_RESPONSE.INTERNAL_SERVER_ERROR, error }
   throw new ResponseError(errorData)
 }
-
-export default catchResponse
