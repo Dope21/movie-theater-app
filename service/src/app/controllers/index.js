@@ -3,6 +3,7 @@ import movie from './movie'
 import movieShowTime from './movieShowTime'
 import theater from './theater'
 import seatType from './seatType'
+import ticket from './ticket'
 
 export default {
   user,
@@ -10,4 +11,5 @@ export default {
   movieShowTime,
   theater,
   seatType,
+  ticket,
 }
