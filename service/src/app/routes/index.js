@@ -11,5 +11,6 @@ router
   .get('/movies/:movieId/showtime/dates', controllers.movieShowTime.getShowDatesByMovieId)
   .get('/movies/:movieId/showtime/:date/theaters', controllers.movieShowTime.getShowTimesInAllTheater)
   .get('/theaters/:id', controllers.theater.getTheaterById)
+  .get('/seat/types', controllers.seatType.getAllSeatType)
 
 export default router
