@@ -18,4 +18,9 @@ export default {
     serverCode: 'GET_THEATER_BY_ID_NOT_FOUND',
     description: 'Theater Not Found.',
   },
+  CREATE_ORDER_DUPLICATE_SEAT: {
+    httpStatus: 400,
+    serverCode: 'CREATE_ORDER_DUPLICATE_SEAT',
+    description: 'Seat Not Avaiable',
+  },
 }
