@@ -11,7 +11,7 @@ const findShowDatesByMovieId = (movieId) => model.aggregate([
   {
     $group: {
       _id: '$movieId',
-      dates: { $push: new Date('$date') },
+      dates: { $addToSet: { $dateToString: { format: '%Y-%m-%d', date: '$date' } } },
     },
   },
 ])
