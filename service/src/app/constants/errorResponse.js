@@ -13,4 +13,9 @@ export default {
     serverCode: 'GET_USER_BY_ID_NOT_FOUND',
     description: 'Movie Not Found.',
   },
+  GET_THEATER_BY_ID_NOT_FOUND: {
+    httpStatus: 404,
+    serverCode: 'GET_THEATER_BY_ID_NOT_FOUND',
+    description: 'Theater Not Found.',
+  },
 }
