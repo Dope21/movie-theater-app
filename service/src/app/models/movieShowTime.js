@@ -23,7 +23,7 @@ const findShowTimeInAllTheaters = (movieId, date) => model.aggregate([
       $expr: {
         $eq: [
           { $dateToString: { format: '%Y-%m-%d', date: '$date' } },
-          date.substring(0, 10),
+          date,
         ],
       },
     },
