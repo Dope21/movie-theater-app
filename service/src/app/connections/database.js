@@ -10,4 +10,10 @@ const connect = async () => {
   }
 }
 
-export default { connect }
+const disconnect = async () => {
+  await mongoose.disconnect()
+  mongoose.connection.removeAllListeners()
+  console.log('[MONGODB] close connection...')
+}
+
+export default { connect, disconnect }
