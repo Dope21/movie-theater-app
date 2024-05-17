@@ -7,11 +7,13 @@ class ResponseError extends Error {
     serviceCode,
     description,
     error,
+    payload,
   }) {
     super(description)
     this.httpStatus = httpStatus || 500
     this.serviceCode = serviceCode
     this.description = error?.message || description
+    this.payload = payload
   }
 }
 
