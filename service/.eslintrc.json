@@ -3,7 +3,10 @@
   "parserOptions": {
     "ecmaVersion": "latest"
   },
-  "plugins": ["import"],
+  "env": {
+    "jest": true
+  },
+  "plugins": ["import", "jest"],
   "rules": {
     "no-unused-vars": ["error", { "argsIgnorePattern": "^_" }],
     "no-unused-expressions": "off",
