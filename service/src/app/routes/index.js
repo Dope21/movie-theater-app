@@ -1,6 +1,7 @@
 import { Router } from 'express'
 
 import controllers from '../controllers'
+import middlewares from '../middlewares'
 
 const router = Router()
 
@@ -13,6 +14,6 @@ router
   .get('/theaters/:id', controllers.theater.getTheaterById)
   .get('/seat/types', controllers.seatType.getAllSeatType)
   .get('/tickets/booked/:showTimeId', controllers.ticket.getBookedSeatsByShowTimeId)
-  .post('/tickets', controllers.ticket.createOrder)
+  .post('/tickets', middlewares.createOrder, controllers.ticket.createOrder)
 
 export default router
