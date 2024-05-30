@@ -35,9 +35,7 @@ describe('[Unit] User Controller', () => {
     })
 
     it('should return error if not found', async () => {
-      const mockUser = undefined
-
-      userModel.findOne.mockResolvedValueOnce(mockUser)
+      userModel.findOne.mockResolvedValueOnce(null)
 
       await userController.getById(req, res)
 
