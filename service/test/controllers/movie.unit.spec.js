@@ -24,7 +24,7 @@ describe('[Unit] Movie Controller', () => {
     it('should return all movies', async () => {
       const mockMovieList = ['movie list']
 
-      movieModel.find.mockResolvedValueOnce(mockMovieList)
+      mockFind.mockResolvedValueOnce(mockMovieList)
 
       await movieController.getAll(req, res)
 
@@ -37,7 +37,7 @@ describe('[Unit] Movie Controller', () => {
     it('should return error if promise reject', async () => {
       const error = new Error('this is error')
 
-      movieModel.find.mockRejectedValueOnce(error)
+      mockFind.mockRejectedValueOnce(error)
 
       await movieController.getAll(req, res)
 
@@ -62,7 +62,7 @@ describe('[Unit] Movie Controller', () => {
     it('should return movie if found', async () => {
       const mockMovie = { _id: 1234, title: 'movie' }
 
-      movieModel.findOne.mockResolvedValueOnce(mockMovie)
+      mockFindOne.mockResolvedValueOnce(mockMovie)
 
       await movieController.getById(req, res)
 
@@ -73,7 +73,7 @@ describe('[Unit] Movie Controller', () => {
     })
 
     it('should return error if movie not found', async () => {
-      movieModel.findOne.mockResolvedValueOnce(null)
+      mockFindOne.mockResolvedValueOnce(null)
 
       await movieController.getById(req, res)
 
@@ -84,7 +84,7 @@ describe('[Unit] Movie Controller', () => {
     it('should return error if promise reject', async () => {
       const error = new Error('this is error')
 
-      movieModel.findOne.mockRejectedValueOnce(error)
+      mockFindOne.mockRejectedValueOnce(error)
 
       await movieController.getById(req, res)
 

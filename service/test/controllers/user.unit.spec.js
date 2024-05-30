@@ -24,7 +24,7 @@ describe('[Unit] User Controller', () => {
     it('should return user if found', async () => {
       const mockUser = { _id: '123', username: 'jonhwick' }
 
-      userModel.findOne.mockResolvedValueOnce(mockUser)
+      mockFindOne.mockResolvedValueOnce(mockUser)
 
       await userController.getById(req, res)
 
@@ -35,7 +35,7 @@ describe('[Unit] User Controller', () => {
     })
 
     it('should return error if not found', async () => {
-      userModel.findOne.mockResolvedValueOnce(null)
+      mockFindOne.mockResolvedValueOnce(null)
 
       await userController.getById(req, res)
 
@@ -46,7 +46,7 @@ describe('[Unit] User Controller', () => {
     it('should return error if promise reject', async () => {
       const error = new Error('this is error')
 
-      userModel.findOne.mockRejectedValueOnce(error)
+      mockFindOne.mockRejectedValueOnce(error)
 
       await userController.getById(req, res)
 
