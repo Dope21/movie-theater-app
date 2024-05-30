@@ -28,6 +28,8 @@ describe('[Unit] Movie Controller', () => {
 
       await movieController.getAll(req, res)
 
+      expect(mockFind).toHaveBeenCalledTimes(1)
+      expect(mockFind).toHaveBeenCalledWith({})
       expect(res.status).toHaveBeenCalledTimes(1)
       expect(res.status).toHaveBeenCalledWith(200)
       expect(res.json).toHaveBeenCalledTimes(1)
@@ -61,11 +63,14 @@ describe('[Unit] Movie Controller', () => {
 
     it('should return movie if found', async () => {
       const mockMovie = { _id: 1234, title: 'movie' }
+      const params = { _id: req.params.id }
 
       mockFindOne.mockResolvedValueOnce(mockMovie)
 
       await movieController.getById(req, res)
 
+      expect(mockFindOne).toHaveBeenCalledTimes(1)
+      expect(mockFindOne).toHaveBeenCalledWith(params)
       expect(res.status).toHaveBeenCalledTimes(1)
       expect(res.status).toHaveBeenCalledWith(200)
       expect(res.json).toHaveBeenCalledTimes(1)
@@ -73,10 +78,14 @@ describe('[Unit] Movie Controller', () => {
     })
 
     it('should return error if movie not found', async () => {
+      const params = { _id: req.params.id }
+
       mockFindOne.mockResolvedValueOnce(null)
 
       await movieController.getById(req, res)
 
+      expect(mockFindOne).toHaveBeenCalledTimes(1)
+      expect(mockFindOne).toHaveBeenCalledWith(params)
       expect(mockCatchResponse).toHaveBeenCalledTimes(1)
       expect(mockCatchResponse).toHaveBeenCalledWith(ERROR_RESPONSE.GET_MOVIE_BY_ID_NOT_FOUND)
     })

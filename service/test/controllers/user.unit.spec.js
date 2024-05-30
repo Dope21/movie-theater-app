@@ -23,11 +23,14 @@ describe('[Unit] User Controller', () => {
 
     it('should return user if found', async () => {
       const mockUser = { _id: '123', username: 'jonhwick' }
+      const params = { _id: req.params.id }
 
       mockFindOne.mockResolvedValueOnce(mockUser)
 
       await userController.getById(req, res)
 
+      expect(mockFindOne).toHaveBeenCalledTimes(1)
+      expect(mockFindOne).toHaveBeenCalledWith(params)
       expect(res.status).toHaveBeenCalledTimes(1)
       expect(res.status).toHaveBeenCalledWith(200)
       expect(res.json).toHaveBeenCalledTimes(1)
@@ -35,10 +38,13 @@ describe('[Unit] User Controller', () => {
     })
 
     it('should return error if not found', async () => {
+      const params = { _id: req.params.id }
       mockFindOne.mockResolvedValueOnce(null)
 
       await userController.getById(req, res)
 
+      expect(mockFindOne).toHaveBeenCalledTimes(1)
+      expect(mockFindOne).toHaveBeenCalledWith(params)
       expect(mockCatchResponse).toHaveBeenCalledTimes(1)
       expect(mockCatchResponse).toHaveBeenCalledWith(ERROR_RESPONSE.GET_USER_BY_ID_NOT_FOUND)
     })
