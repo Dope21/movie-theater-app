@@ -15,7 +15,8 @@
     "build": "babel -d dist src",
     "dev": "nodemon src/server.js --exec babel-node -e js",
     "start": "node dist/server.js",
-    "test:unit": "jest -c jest.config.unit.js"
+    "test:unit": "jest -c jest.config.unit.js",
+    "test:integration": "jest -c jest.config.int.js"
   },
   "devDependencies": {
     "@babel/cli": "7.24.*",
