@@ -14,7 +14,6 @@ const errorFormat = ({
 const executeValidator = (requestValidator) => async (req, res, next) => {
   await Promise.all(requestValidator.map((validate) => validate(req, res, () => {})))
   const errors = validationResult(req).formatWith(errorFormat)
-  console.log(errors)
   if (errors.isEmpty()) return next()
 
   return catchResponse({
