@@ -1,7 +1,7 @@
 module.exports = {
   verbose: true,
   testEnvironment: 'node',
-  textRegrex: '.unit.spec.js',
+  testRegex: '.unit.spec.js',
   setupFilesAfterEnv: ['./jest.setup.js'],
   resetMocks: true,
 }
