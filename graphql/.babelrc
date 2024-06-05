@@ -1,0 +1,14 @@
+{
+  "passPerPreset": true,
+  "presets": [
+    [
+      "@babel/preset-env",
+      {
+        "targets": {
+          "node": "current"
+        }
+      }
+    ]
+  ],
+  "plugins": ["rewire"]
+}
