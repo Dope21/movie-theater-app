@@ -14,7 +14,7 @@ const typeDefs = `
   type Movie {
     _id: String
     title: String
-    iamge: String
+    image: String
     duration: Int
     preview: String
     tags: [String]
