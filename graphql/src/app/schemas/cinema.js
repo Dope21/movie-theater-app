@@ -88,6 +88,19 @@ const typeDefs = `
   type CreateOrderPayload {
     data: MessagePayload
   }
+
+  input TicketSeat {
+    seatType: String
+    position: String
+  }
+
+  input CreateOrderInputs {
+    userId: String
+    showAt: String
+    seats: [TicketSeat]
+    totalSeats: Int
+    totalPrices: Float
+  }
 `
 const queries = `
   getUserById(id: String): UserPayload
@@ -98,7 +111,7 @@ const queries = `
   getTheaterSeats(theaterId: String, showTimeId: String): TheaterSeatsPayload
 `
 const mutations = `
-  createOrder(order: CreateOrderInputs): ResponseCreatePayload
+  createOrder(order: CreateOrderInputs): CreateOrderPayload
 `
 const resolver = {
   Query: {
