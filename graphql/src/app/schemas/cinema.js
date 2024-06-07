@@ -54,7 +54,7 @@ const typeDefs = `
 
   type TheaterSeats {
     theater: Theater
-    bookedSeat: Set<String>
+    bookedSeat: [String]
   }
 
   type UserPayload {
