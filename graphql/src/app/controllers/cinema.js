@@ -64,10 +64,10 @@ const getTheaterSeats = async (theaterId, showTimeId) => {
   }
 }
 
-const createOrder = async () => async (order) => {
+const createOrder = async (order) => {
   try {
     const response = await cinemaService.createOrder(order)
-    return response.data
+    return response
   } catch (error) {
     return error.message
   }
