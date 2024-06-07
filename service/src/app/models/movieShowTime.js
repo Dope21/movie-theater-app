@@ -6,15 +6,18 @@ import movieShowTimeSchema from './schemas/movieShowTime'
 
 const model = mongoose.model('movieshowtimes', movieShowTimeSchema)
 
-const findShowDatesByMovieId = (movieId) => model.aggregate([
-  { $match: { movieId: stringToObjectId(movieId), date: { $gte: new Date() } } },
-  {
-    $group: {
-      _id: '$movieId',
-      dates: { $addToSet: { $dateToString: { format: '%Y-%m-%d', date: '$date' } } },
+const findShowDatesByMovieId = async (movieId) => {
+  const [data] = await model.aggregate([
+    { $match: { movieId: stringToObjectId(movieId), date: { $gte: new Date() } } },
+    {
+      $group: {
+        _id: '$movieId',
+        dates: { $addToSet: { $dateToString: { format: '%Y-%m-%d', date: '$date' } } },
+      },
     },
-  },
-])
+  ])
+  return data || {}
+}
 
 const findShowTimeInAllTheaters = (movieId, date) => model.aggregate([
   {
@@ -28,7 +31,6 @@ const findShowTimeInAllTheaters = (movieId, date) => model.aggregate([
       },
     },
   },
-
   {
     $lookup: {
       from: 'theaters',
