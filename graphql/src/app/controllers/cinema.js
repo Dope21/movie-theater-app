@@ -1,9 +1,9 @@
 import cinemaService from '../services/cinema'
 
-const getUserById = async () => {
+const getUserById = async (id) => {
   try {
-    const response = await cinemaService.getUserById()
-    return response.data
+    const response = await cinemaService.getUserById(id)
+    return response
   } catch (error) {
     return error.message
   }
