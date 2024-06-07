@@ -56,9 +56,9 @@ const getTheaterSeats = async (theaterId, showTimeId) => {
     const responseBookedSeat = await cinemaService.getBookedSeatByShowTimeId(showTimeId)
 
     const theater = responseTheater.data
-    const bookedSeat = new Set(responseBookedSeat.data)
+    const bookedSeat = responseBookedSeat.data
 
-    return { theater, bookedSeat }
+    return { data: { theater, bookedSeat } }
   } catch (error) {
     return error.message
   }
