@@ -81,7 +81,7 @@ const typeDefs = `
     data: TheaterSeats
   }
 
-  Type MessagePayload {
+  type MessagePayload {
     message: String
   }
 
@@ -91,7 +91,7 @@ const typeDefs = `
 `
 const queries = `
   getUserById(id: String): UserPayload
-  getAllMovies(): MovieListPayload
+  getAllMovies: MovieListPayload
   getMovieById(id: String): MoviePayload
   getShowDatesByMovieId(id: String): ShowDateListPayload
   getShowTimesInAllTheaters(movieId: String, date: String): ShowTimesInAllTheatersPayload

@@ -23,11 +23,11 @@ const typeDefs = gql`
   ${moduleMutations.join('\n')}
 `
 
-const resolver = merge(
+const resolvers = merge(
   cinema.resolver,
 )
 
 export {
   typeDefs,
-  resolver,
+  resolvers,
 }
