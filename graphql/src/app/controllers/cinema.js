@@ -12,7 +12,7 @@ const getUserById = async (id) => {
 const getAllMovies = async () => {
   try {
     const response = await cinemaService.getAllMovies()
-    return response.data
+    return response
   } catch (error) {
     return error.message
   }
@@ -21,7 +21,7 @@ const getAllMovies = async () => {
 const getMovieById = async (id) => {
   try {
     const response = await cinemaService.getMovieById(id)
-    return response.data
+    return response
   } catch (error) {
     return error.message
   }
