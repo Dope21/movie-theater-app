@@ -13,8 +13,7 @@ const createOrder = async (req, res) => {
     } = req.body
 
     const bookedSeats = await ticketModel.findBookedSeatsByShowTimeId(showAt)
-    const bookedSeatsSet = new Set(bookedSeats[0].bookedSeats)
-    if (seats.some((seat) => bookedSeatsSet.has(seat.position))) throw ERROR_RESPONSE.CREATE_ORDER_DUPLICATE_SEAT
+    if (bookedSeats.length) throw ERROR_RESPONSE.CREATE_ORDER_DUPLICATE_SEAT
 
     await ticketModel.create({
       userId,
