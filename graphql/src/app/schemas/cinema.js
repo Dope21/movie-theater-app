@@ -35,7 +35,7 @@ const typeDefs = `
     seats: [Seat]
   }
 
-  type StartTime {
+  type StartTimes {
     time: String
     showTimeId: String
   }
@@ -44,7 +44,7 @@ const typeDefs = `
     theaterId: String
     theaterNumber: Int
     theaterType: String
-    startTime: [StartTime]
+    startTimes: [StartTimes]
   }
 
   type ShowDateList {
