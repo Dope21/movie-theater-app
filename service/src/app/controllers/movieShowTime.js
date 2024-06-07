@@ -4,8 +4,8 @@ import { catchResponse } from '../libs/resErrorHandling'
 const getShowDatesByMovieId = async (req, res) => {
   try {
     const { movieId } = req.params
-    const showDates = await movieShowTimeModel.findShowDatesByMovieId(movieId)
-    return res.status(200).json(showDates)
+    const { dates } = await movieShowTimeModel.findShowDatesByMovieId(movieId)
+    return res.status(200).json(dates || [])
   } catch (error) {
     return catchResponse(error)
   }
