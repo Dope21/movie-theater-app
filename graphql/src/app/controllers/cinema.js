@@ -35,7 +35,7 @@ const getShowDatesByMovieId = async (id) => {
     const responseTheaters = await cinemaService.getShowTimesInAllTheaters(id, showDateList[0])
     const initialTheaterList = responseTheaters.data
 
-    return { showDateList, initialTheaterList }
+    return { data: { showDateList, initialTheaterList } }
   } catch (error) {
     return error.message
   }
@@ -43,8 +43,8 @@ const getShowDatesByMovieId = async (id) => {
 
 const getShowTimesInAllTheaters = async (movieId, date) => {
   try {
-    const response = await cinemaService.getShowDatesByMovieId(movieId, date)
-    return response.data
+    const response = await cinemaService.getShowTimesInAllTheaters(movieId, date)
+    return response
   } catch (error) {
     return error.message
   }
