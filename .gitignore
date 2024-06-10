@@ -5,4 +5,5 @@
 */.DS_Store
 */dist
 */yarn.lock
+*/bun.lockb
 */package-lock.json
