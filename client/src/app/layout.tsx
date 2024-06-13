@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import Providers from './providers'
+import Main from '@/components/layouts/main'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -12,9 +13,11 @@ export const metadata: Metadata = {
 const RootLayout: React.FC<React.PropsWithChildren> = ({ children }) => {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={inter.className} style={{ margin: 0 }}>
         <Providers>
-          {children}
+          <Main>
+            {children}
+          </Main>
         </Providers>
       </body>
     </html>
