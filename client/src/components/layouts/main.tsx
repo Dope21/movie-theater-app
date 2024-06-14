@@ -19,7 +19,7 @@ const Main: React.FC<React.PropsWithChildren> = ({ children }) => {
         <h1>Cinema</h1>
         <Navbar />
       </Header>
-      <Content style={{ padding: '1rem' }}>{children}</Content>
+      <Content style={{ padding: '1rem 3.125rem 1rem 3.125rem' }}>{children}</Content>
       <Footer style={{ textAlign: 'center' }}>Cinema App ©2024 Created by Thanasak</Footer>
     </Layout>
   )
