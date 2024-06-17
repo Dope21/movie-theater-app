@@ -21,7 +21,7 @@ const StyledCard = styled(Card)`
   .ant-card-body { padding: 0.5rem; }
 `
 
-const MovieCard = ({ _id, src, title, date }: MovieCardProps) => {
+const MovieCard: React.FC<MovieCardProps> = ({ _id, src, title, date }) => {
   const router = useRouter()
   const handleOnclick = () => router.push(`/movie/${_id}`)    
 

@@ -21,7 +21,7 @@ const Title = styled.h2`
   margin: 0 0 6px 0;
 `
 
-const MovieCardWithDetail = ({ title, image, duration, tags, startDate }: MovieCardWithDetailProps) => {
+const MovieCardWithDetail: React.FC<MovieCardWithDetailProps> = ({ title, image, duration, tags, startDate }) => {
   const router = useRouter()
   const path = usePathname()
   const viewShowTime = () => router.push(`${path}/showtimes`)

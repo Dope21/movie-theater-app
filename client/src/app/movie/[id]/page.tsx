@@ -8,7 +8,7 @@ interface MovieDeatilProps {
   params: { id: string }
 }
 
-const MovieDetail = async ({ params }: MovieDeatilProps) => {
+const MovieDetail: React.FC<MovieDeatilProps> = async ({ params }) => {
   const client = getClient()
   const { data } = await client.query<GetMovieByIdResponse>({query: GET_MOVIE_BY_ID,  variables: { id: params.id } })
   const movie = data.getMovieById.data
