@@ -37,7 +37,7 @@ const MovieCardWithDetail = ({ title, image, duration, tags, startDate }: MovieC
         preview={false}
       />
       <Flex vertical justify='space-between' style={{ maxWidth: 180 }}>
-        <span>{formatDate(startDate)}</span>
+        <span style={{ fontSize: 18 }}>{formatDate(startDate)}</span>
         <div>
           <Title>{title}</Title>
           <span>{tags.map((value, index) => <Tag key={index}>{value}</Tag> )}</span>
