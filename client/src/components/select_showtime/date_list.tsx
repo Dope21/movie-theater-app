@@ -1,5 +1,5 @@
 import { Space } from 'antd'
-import DateButton from '@/components/showtimes/date_button'
+import DateButton from '@/components/select_showtime/date_button'
 
 interface DateListProps {
   itemList: [string]

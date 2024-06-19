@@ -1,6 +1,6 @@
 import { Flex, Tag } from 'antd'
 import { Theater } from '@/app/movie/[id]/showtimes/types'
-import TimeButtonList from '@/components/showtimes/time_button'
+import TimeButtonList from '@/components/select_showtime/time_button'
 
 interface TheaterListProps {
   itemList: [Theater] | undefined
