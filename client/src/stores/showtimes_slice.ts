@@ -6,17 +6,46 @@ enum OrderSteps {
   BUY_TICKET = 2
 }
 
-interface ShowtimesState {
-  movieId: string
-  showtimeId: string
+interface SelectedMovie {
+  id: string
+  title: string
+  duration: number
+  image: string
+}
+
+interface SelectedShowtime {
   theaterId: string
+  theaterNumber: number
+  showtimeId: string 
+  showtime: string
+}
+
+interface SelectedSeat {
+  position: string
+  price: number
+}
+
+interface ShowtimesState {
+  selectedMovie: SelectedMovie
+  selectedShowtime: SelectedShowtime
+  selectedSeatList: SelectedSeat[]
   orderStep: OrderSteps
 }
 
 const initialState: ShowtimesState = {
-  movieId: '',
-  showtimeId: '',
-  theaterId: '',
+  selectedMovie: {
+    id: '',
+    title: '',
+    duration: 0,
+    image: ''
+  },
+  selectedShowtime: {
+    theaterId: '',
+    theaterNumber: 0,
+    showtimeId: '',
+    showtime: ''
+  },
+  selectedSeatList: [],
   orderStep: OrderSteps.SELECT_SHOWTIME
 }
 
@@ -24,16 +53,34 @@ const showtimesSlice = createSlice({
   name: 'showtimes',
   initialState,
   reducers: {
-    setMovieId: (state, action: PayloadAction<string>) => {
-      state.movieId = action.payload
+    setSelectedMovie: (state, action: PayloadAction<SelectedMovie>) => {
+      state.selectedMovie = action.payload
     },
-    setSelectedShowtime: (state, action: PayloadAction<{ theaterId: string, showtimeId: string }>) => {
+    confirmShowtime: (state, action: PayloadAction<SelectedShowtime>) => {
       state.orderStep = 1    
-      state.theaterId = action.payload.theaterId
-      state.showtimeId = action.payload.showtimeId
+      state.selectedShowtime = action.payload
+    },
+    setSelectedSeat: (state, action: PayloadAction<SelectedSeat>) => {
+      state.selectedSeatList.push(action.payload)
+    },
+    removeSelectedSeat: (state, action: PayloadAction<SelectedSeat>) => {
+      const filteredSeat = state.selectedSeatList.filter(item => item.position != action.payload.position)
+      state.selectedSeatList = filteredSeat
+    },
+    confirmSeat: (state) => {
+      state.orderStep = 2
     }
   }
 })
 
-export const { setMovieId, setSelectedShowtime } = showtimesSlice.actions
+export const { 
+  confirmShowtime, 
+  setSelectedMovie, 
+  setSelectedSeat, 
+  removeSelectedSeat,
+  confirmSeat
+} = showtimesSlice.actions
+
+export type { SelectedShowtime }
+
 export default showtimesSlice.reducer
