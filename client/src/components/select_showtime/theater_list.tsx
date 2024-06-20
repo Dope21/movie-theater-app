@@ -1,5 +1,5 @@
 import { Flex, Tag } from 'antd'
-import { Theater } from '@/app/movie/[id]/showtimes/types'
+import { Theater } from '@/components/select_showtime/types'
 import TimeButtonList from '@/components/select_showtime/time_button'
 
 interface TheaterListProps {
@@ -18,7 +18,7 @@ const TheaterList: React.FC<TheaterListProps> = ({ itemList }) => {
             <Tag>{theater.theaterType}</Tag>
           </Flex>
 
-          <TimeButtonList theaterId={theater.theaterId} startTimes={theater.startTimes} />
+          <TimeButtonList theater={theater} />
         </div>
       ))} 
     </Flex>

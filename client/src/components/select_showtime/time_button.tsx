@@ -1,42 +1,33 @@
 import { useDispatch } from 'react-redux'
 import { Button, Space } from 'antd'
-import { StartTime } from '@/app/movie/[id]/showtimes/types'
 import { AppDispatch } from '@/stores'
-import { setSelectedShowtime } from '@/stores/showtimes_slice'
-
-interface TimeButtonProps {
-  time: string
-  onClick: () => void
-}
+import { confirmShowtime, SelectedShowtime } from '@/stores/showtimes_slice'
+import { Theater } from '@/components/select_showtime/types'
 
 interface TimeButtonListProps {
-  startTimes: [StartTime]
-  theaterId: string
+  theater: Theater
 }
 
-const TimeButton: React.FC<TimeButtonProps> = ({ time, onClick }) => {
-
-  return(
-    <Button onClick={onClick}>
-      {time}
-    </Button>
-  ) 
-}
-
-const TimeButtonList: React.FC<TimeButtonListProps> = ({ startTimes, theaterId }) => {
+const TimeButtonList: React.FC<TimeButtonListProps> = ({ theater }) => {
   const dispatch = useDispatch<AppDispatch>()
-  const handleChangeStep = (theaterId: string, showtimeId: string) => {
-    dispatch(setSelectedShowtime({ theaterId, showtimeId }))
+  const handleChangeStep = (selectedShowtime: SelectedShowtime) => {
+    dispatch(confirmShowtime(selectedShowtime))
   }
 
   return (
     <Space>
-      {startTimes.map((time, key) => (
-        <TimeButton 
+      {theater.startTimes.map((time, key) => (
+        <Button 
           key={time.showTimeId + key} 
-          time={time.time} 
-          onClick={() => handleChangeStep(theaterId, time.showTimeId)} 
-        />
+          onClick={() => handleChangeStep({
+            theaterId: theater.theaterId,
+            theaterNumber: theater.theaterNumber,
+            showtimeId: time.showTimeId ,
+            showtime: time.time
+          })} 
+        >
+          {time.time}
+        </Button>
       ))}
     </Space>
   )
