@@ -8,7 +8,10 @@ const useSelectSeat = () => {
   const [groupedSeats, setGroupedSeats] = useState<GroupedSeats>({})
   const [bookedPosition, setBookedPosition] = useState(new Set<string>())
   const { theaterId, showtimeId } = useSelector((state: RootState) => state.showtimes.selectedShowtime)
-  const theaterData = useSuspenseQuery<GetTheaterSeatsResponse>(GET_THEATER_SEATS, { variables: { theaterId, showtimeId }})
+  const theaterData = useSuspenseQuery<GetTheaterSeatsResponse>(GET_THEATER_SEATS, { 
+    variables: { theaterId, showtimeId },
+    fetchPolicy: 'no-cache'
+  })
 
   useEffect(() =>{
     const data = theaterData.data.getTheaterSeats.data
