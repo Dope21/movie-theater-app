@@ -4,7 +4,6 @@ import { ClockCircleOutlined } from '@ant-design/icons'
 import { useSelector, useDispatch } from 'react-redux'
 import { RootState, AppDispatch } from '@/stores'
 import { confirmSeat } from '@/stores/showtimes_slice'
-import React from 'react'
 
 const StyledCard = styled(Card)`
   width: 400px;
