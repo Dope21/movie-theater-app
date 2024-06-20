@@ -21,6 +21,7 @@ interface SelectedShowtime {
 }
 
 interface SelectedSeat {
+  name: string
   position: string
   price: number
 }
@@ -53,6 +54,7 @@ const showtimesSlice = createSlice({
   name: 'showtimes',
   initialState,
   reducers: {
+    resetShowtime: (state) => state = initialState,
     setSelectedMovie: (state, action: PayloadAction<SelectedMovie>) => {
       state.selectedMovie = action.payload
     },
@@ -78,9 +80,10 @@ export const {
   setSelectedMovie, 
   setSelectedSeat, 
   removeSelectedSeat,
-  confirmSeat
+  confirmSeat,
+  resetShowtime
 } = showtimesSlice.actions
 
-export type { SelectedShowtime }
+export type { SelectedShowtime, SelectedSeat }
 
 export default showtimesSlice.reducer
