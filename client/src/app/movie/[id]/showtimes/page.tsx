@@ -16,7 +16,7 @@ const ShowTime: React.FC<ShowTimeProps> = ({ params }) => {
   const DisplayStep = useCallback(() => {
     switch (orderStep) {
       case 0: return <SelectShowtime movieId={params.id} />
-      case 1: return <SelectSeat movieId={params.id} />
+      case 1: return <SelectSeat />
       case 2: return <div>This is confirm order</div>
       default: return <div>There something wrong..</div>
     }
