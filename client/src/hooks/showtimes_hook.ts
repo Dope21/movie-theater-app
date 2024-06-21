@@ -2,7 +2,7 @@ import { useEffect } from "react"
 import { useSuspenseQuery, useLazyQuery } from "@apollo/client"
 import { useDispatch } from "react-redux"
 import { AppDispatch } from "@/stores"
-import { setSelectedMovie } from "@/stores/showtimes_slice"
+import { setSelectedMovie, resetShowtime } from "@/stores/showtimes_slice"
 import { GET_MOVIE_BY_ID, GetMovieByIdResponse } from "@/app/movie/[id]/types"
 import { 
   GetShowDatesByMovieIdResponse, 
@@ -15,8 +15,9 @@ import {
 const useShowtimes = (movieId: string) => {
 
   const dispatch = useDispatch<AppDispatch>()
-  const movieData = useSuspenseQuery<GetMovieByIdResponse>(GET_MOVIE_BY_ID, { variables: { id: movieId }})
+  dispatch(resetShowtime())
 
+  const movieData = useSuspenseQuery<GetMovieByIdResponse>(GET_MOVIE_BY_ID, { variables: { id: movieId }})
   useEffect(() => {
     const movie = movieData.data.getMovieById.data
     const selectedMovie = { 

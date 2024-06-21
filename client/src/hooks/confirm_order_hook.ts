@@ -1,8 +1,9 @@
 import { message } from 'antd'
 import { useRouter } from 'next/navigation'
 import { useMutation } from '@apollo/client'
-import { useSelector } from "react-redux"
-import { RootState } from "@/stores"
+import { useSelector, useDispatch } from "react-redux"
+import { RootState, AppDispatch } from "@/stores"
+import { resetShowtime } from '@/stores/showtimes_slice'
 import { CREATE_NEW_ORDER } from '@/components/confirm_order/types'
 import { SelectedSeat } from '@/stores/showtimes_slice'
 
@@ -27,6 +28,7 @@ const useConfirmOrder = () => {
     })
   }
 
+  const dispatch = useDispatch<AppDispatch>()
   const router = useRouter()
   const [createOrder] = useMutation(CREATE_NEW_ORDER)
 
@@ -51,7 +53,10 @@ const useConfirmOrder = () => {
       const { data } = await createOrder({ variables: { order: order }})
       if (!data.createOrder.data) throw new Error()
       successMessage()
-      setTimeout(() => router.push('/'), 1500)
+      setTimeout(() => {
+        dispatch(resetShowtime())
+        router.push('/')
+      }, 1500)
     } catch(error) {
       errorMessage()
     }
