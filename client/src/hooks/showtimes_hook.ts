@@ -15,10 +15,10 @@ import {
 const useShowtimes = (movieId: string) => {
 
   const dispatch = useDispatch<AppDispatch>()
-  dispatch(resetShowtime())
-
   const movieData = useSuspenseQuery<GetMovieByIdResponse>(GET_MOVIE_BY_ID, { variables: { id: movieId }})
+
   useEffect(() => {
+    dispatch(resetShowtime())
     const movie = movieData.data.getMovieById.data
     const selectedMovie = { 
       id: movieId, 
