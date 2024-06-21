@@ -1,15 +1,15 @@
-import { useEffect } from "react"
-import { useSuspenseQuery, useLazyQuery } from "@apollo/client"
-import { useDispatch } from "react-redux"
-import { AppDispatch } from "@/stores"
-import { setSelectedMovie, resetShowtime } from "@/stores/showtimes_slice"
-import { GET_MOVIE_BY_ID, GetMovieByIdResponse } from "@/app/movie/[id]/types"
+import { useEffect } from 'react'
+import { useSuspenseQuery, useLazyQuery } from '@apollo/client'
+import { useDispatch } from 'react-redux'
+import { AppDispatch } from '@/stores'
+import { setSelectedMovie, resetShowtime } from '@/stores/showtimes_slice'
+import { GET_MOVIE_BY_ID, GetMovieByIdResponse } from '@/app/movie/[id]/types'
 import { 
   GetShowDatesByMovieIdResponse, 
   GetShowTimesInAllTheatersResponse,
   GET_SHOWTIMES_IN_ALL_THEATERS,
   GET_SHOW_DATES_BY_MOVIE_ID
-} from "@/components/select_showtime/types"
+} from '@/components/select_showtime/types'
 
 
 const useShowtimes = (movieId: string) => {

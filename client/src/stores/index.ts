@@ -1,4 +1,4 @@
-import { configureStore } from "@reduxjs/toolkit";
+import { configureStore } from '@reduxjs/toolkit'
 import showtimesReducer from '@/stores/showtimes_slice'
 
 export const store = configureStore({

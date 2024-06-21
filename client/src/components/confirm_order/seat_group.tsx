@@ -1,5 +1,5 @@
 import { Flex } from 'antd'
-import { SelectedSeat } from "@/stores/showtimes_slice"
+import { SelectedSeat } from '@/stores/showtimes_slice'
 import Regular from '@/icons/regular.svg'
 import Honeymoon from '@/icons/honeymoon.svg'
 import Emperor from '@/icons/emperor.svg'

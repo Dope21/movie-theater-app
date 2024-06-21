@@ -1,8 +1,8 @@
 import { message } from 'antd'
 import { useRouter } from 'next/navigation'
 import { useMutation } from '@apollo/client'
-import { useSelector, useDispatch } from "react-redux"
-import { RootState, AppDispatch } from "@/stores"
+import { useSelector, useDispatch } from 'react-redux'
+import { RootState, AppDispatch } from '@/stores'
 import { resetShowtime } from '@/stores/showtimes_slice'
 import { CREATE_NEW_ORDER } from '@/components/confirm_order/types'
 import { SelectedSeat } from '@/stores/showtimes_slice'
@@ -12,14 +12,14 @@ interface GroupedSeats {
 }
 
 const useConfirmOrder = () => {
-  const [messageApi, contextHolder] = message.useMessage();
+  const [messageApi, contextHolder] = message.useMessage()
 
   const successMessage = () => {
     messageApi.open({
       type: 'success',
       content: 'Create Order Success',
     })
-  };
+  }
   
   const errorMessage = () => {
     messageApi.open({

@@ -29,6 +29,7 @@ const Summary = () => {
           width={150} 
           height={150} 
           style={{ objectFit: 'cover', borderRadius: 5 }} 
+          alt='movie'
         />
         <div>
           <Title>{showtimeInfo.selectedMovie.title}</Title>
