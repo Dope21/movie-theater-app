@@ -1,11 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
-enum OrderSteps {
-  SELECT_SHOWTIME = 0,
-  SELECT_SEAT = 1,
-  BUY_TICKET = 2
-}
-
 interface SelectedMovie {
   id: string
   title: string
@@ -30,7 +24,7 @@ interface ShowtimesState {
   selectedMovie: SelectedMovie
   selectedShowtime: SelectedShowtime
   selectedSeatList: SelectedSeat[]
-  orderStep: OrderSteps
+  orderStep: number
 }
 
 const initialState: ShowtimesState = {
@@ -47,14 +41,14 @@ const initialState: ShowtimesState = {
     showtime: ''
   },
   selectedSeatList: [],
-  orderStep: OrderSteps.SELECT_SHOWTIME
+  orderStep: 0
 }
 
 const showtimesSlice = createSlice({
   name: 'showtimes',
   initialState,
   reducers: {
-    resetShowtime: (state) => state = initialState,
+    resetShowtime: () => initialState,
     setSelectedMovie: (state, action: PayloadAction<SelectedMovie>) => {
       state.selectedMovie = action.payload
     },

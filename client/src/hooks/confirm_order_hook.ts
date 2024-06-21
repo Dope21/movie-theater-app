@@ -46,7 +46,7 @@ const useConfirmOrder = () => {
       const order = {
         userId: '664317f046073d14c4c6b1ae', // hard coded
         showAt: showtimeInfo.selectedShowtime.showtimeId,
-        seats: showtimeInfo.selectedSeatList.map(({ price, position, name: seatType }) => ({ seatType, position })),
+        seats: showtimeInfo.selectedSeatList.map(({ position, name: seatType }) => ({ seatType, position })),
         totalSeats: showtimeInfo.selectedSeatList.length, 
         totalPrices: totalPrices
       }
