@@ -10,7 +10,7 @@ const Home = async () => {
     <>
       <Divider orientation="left">MOVIES</Divider>
       <Flex wrap gap="large">
-        {data.getAllMovies.data.map((movie, index) => (
+        {data.getAllMovies.data && data.getAllMovies.data.map((movie, index) => (
           <MovieCard 
             key={movie._id + index} 
             _id={movie._id} 
