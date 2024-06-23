@@ -1,5 +1,11 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
+enum OrderStep {
+  SELECT_SHOWTIME = 0,
+  SELECT_SEAT = 1,
+  CONFIRM_ORDER = 2
+}
+
 interface SelectedMovie {
   id: string
   title: string
@@ -24,7 +30,7 @@ interface ShowtimesState {
   selectedMovie: SelectedMovie
   selectedShowtime: SelectedShowtime
   selectedSeatList: SelectedSeat[]
-  orderStep: number
+  orderStep: OrderStep
 }
 
 const initialState: ShowtimesState = {
@@ -52,10 +58,6 @@ const showtimesSlice = createSlice({
     setSelectedMovie: (state, action: PayloadAction<SelectedMovie>) => {
       state.selectedMovie = action.payload
     },
-    confirmShowtime: (state, action: PayloadAction<SelectedShowtime>) => {
-      state.orderStep = 1    
-      state.selectedShowtime = action.payload
-    },
     setSelectedSeat: (state, action: PayloadAction<SelectedSeat>) => {
       state.selectedSeatList.push(action.payload)
     },
@@ -63,19 +65,37 @@ const showtimesSlice = createSlice({
       const filteredSeat = state.selectedSeatList.filter(item => item.position != action.payload.position)
       state.selectedSeatList = filteredSeat
     },
+    confirmShowtime: (state, action: PayloadAction<SelectedShowtime>) => {
+      state.orderStep = OrderStep.SELECT_SEAT    
+      state.selectedShowtime = action.payload
+    },
     confirmSeat: (state) => {
-      state.orderStep = 2
+      state.orderStep = OrderStep.CONFIRM_ORDER
+    },
+    setPreviousStep: (state) => {
+      if (state.orderStep === OrderStep.SELECT_SHOWTIME) {
+        window.location.href = `/movie/${state.selectedMovie.id}`
+
+      } else if (state.orderStep === OrderStep.SELECT_SEAT) {
+        state.selectedShowtime
+        state.orderStep = OrderStep.SELECT_SHOWTIME
+
+      } else if (state.orderStep === OrderStep.CONFIRM_ORDER) {
+        state.selectedSeatList = []
+        state.orderStep = OrderStep.SELECT_SEAT
+      }
     }
   }
 })
 
 export const { 
-  confirmShowtime, 
   setSelectedMovie, 
   setSelectedSeat, 
   removeSelectedSeat,
   confirmSeat,
-  resetShowtime
+  confirmShowtime, 
+  resetShowtime,
+  setPreviousStep
 } = showtimesSlice.actions
 
 export type { SelectedShowtime, SelectedSeat }

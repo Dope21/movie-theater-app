@@ -1,7 +1,8 @@
-
-import { Steps } from 'antd'
-import { useSelector } from 'react-redux'
-import { RootState } from '@/stores'
+import { Steps, Button } from 'antd'
+import { LeftOutlined } from '@ant-design/icons'
+import { useSelector, useDispatch } from 'react-redux'
+import { RootState, AppDispatch } from '@/stores'
+import { setPreviousStep } from '@/stores/showtimes_slice'
 
 const items = [
   { title: 'Select Showtime' },
@@ -10,10 +11,15 @@ const items = [
 ]
 
 const OrderSteps = () => {
+  const dispatch = useDispatch<AppDispatch>()
   const { orderStep } = useSelector((state: RootState) => state.showtimes)
+  const handleOnClick = () => dispatch(setPreviousStep())
 
   return (
-    <Steps current={orderStep} items={items} style={{ margin: '2rem 0 2rem 0' }} />
+    <div style={{ margin: '2rem 0 2rem 0' }}>
+      <Steps current={orderStep} items={items} style={{ marginBottom: '1rem' }} />
+      <Button type='link' icon={<LeftOutlined />} onClick={handleOnClick}>Back</Button>
+    </div>
   )
 }
 
