@@ -1,6 +1,6 @@
-import useConfirmOrder from "./confirm_order";
-import useSelectSeat from "./select_seat";
-import useShowtimes from "./showtimes";
+import useConfirmOrder from './confirm_order'
+import useSelectSeat from './select_seat'
+import useShowtimes from './showtimes'
 
 export {
   useConfirmOrder,
