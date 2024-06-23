@@ -1,6 +1,6 @@
 import { Flex, Button } from 'antd'
 import SeatGroup from '@/components/confirm_order/seat_group'
-import useConfirmOrder from '@/hooks/confirm_order_hook'
+import { useConfirmOrder } from '@/hooks'
 
 const SeatDetail = () => {
 

@@ -1,7 +1,7 @@
 import { Flex } from 'antd'
 import SeatList from '@/components/select_seat/seat_list'
 import SelectDetail from '@/components/select_seat/select_detail'
-import useSelectSeat from '@/hooks/select_seat_hook'
+import { useSelectSeat } from '@/hooks'
 
 const SelectSeat: React.FC = () => {
 

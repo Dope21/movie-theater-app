@@ -1,4 +1,4 @@
-import useShowtimes from '@/hooks/showtimes_hook'
+import { useShowtimes } from '@/hooks'
 import DateList from '@/components/select_showtime/date_list'
 import TheaterList from '@/components/select_showtime/theater_list'
 
