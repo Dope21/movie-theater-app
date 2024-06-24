@@ -8,6 +8,9 @@ services:
       - "3000:3000"
     env_file:
       - ./client/.env
+    environment:
+      - NEXT_PUBLIC_API_GATEWAY_URL_SERVER=http://api-gateway:3001
+      - NEXT_PUBLIC_API_GATEWAY_URL_CLIENT=http://localhost:3001
     command: ['/bin/sh', '-c', 'bun install && bun run dev']
     depends_on:
       - api-gateway
