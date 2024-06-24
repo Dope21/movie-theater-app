@@ -7,7 +7,7 @@ export const { getClient, query, PreloadQuery } = registerApolloClient(() => {
   return new ApolloClient({
     cache: new InMemoryCache(),
     link: new HttpLink({
-      uri: `${configs.API_GATEWAY_URL}/graphql`,
+      uri: `${configs.API_GATEWAY_URL_SERVER}/graphql`,
     }),
   })
 })

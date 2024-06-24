@@ -6,7 +6,7 @@ import configs from '@/configs'
 
 const makeClient = () => {
   const httpLink = new HttpLink({
-    uri: `${configs.API_GATEWAY_URL}/graphql`,
+    uri: `${configs.API_GATEWAY_URL_CLIENT}/graphql`,
     fetchOptions: { cache: 'no-store' }
   })
 
