@@ -8,8 +8,7 @@ const model = mongoose.model('movieshowtimes', movieShowTimeSchema)
 
 const findShowDatesByMovieId = async (movieId) => {
   const [data] = await model.aggregate([
-    // { $match: { movieId: stringToObjectId(movieId), date: { $gte: new Date() } } },
-    { $match: { movieId: stringToObjectId(movieId), date: { $gte: new Date('2024-05-10') } } },
+    { $match: { movieId: stringToObjectId(movieId) } },
     {
       $group: {
         _id: '$movieId',
