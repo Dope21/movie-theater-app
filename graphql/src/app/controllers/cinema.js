@@ -1,9 +1,9 @@
 import cinemaService from '../services/cinema'
 
-const getUserById = async () => {
+const getUserById = async (id) => {
   try {
-    const response = await cinemaService.getUserById()
-    return response.data
+    const response = await cinemaService.getUserById(id)
+    return response
   } catch (error) {
     return error.message
   }
@@ -12,7 +12,7 @@ const getUserById = async () => {
 const getAllMovies = async () => {
   try {
     const response = await cinemaService.getAllMovies()
-    return response.data
+    return response
   } catch (error) {
     return error.message
   }
@@ -21,7 +21,7 @@ const getAllMovies = async () => {
 const getMovieById = async (id) => {
   try {
     const response = await cinemaService.getMovieById(id)
-    return response.data
+    return response
   } catch (error) {
     return error.message
   }
@@ -35,7 +35,7 @@ const getShowDatesByMovieId = async (id) => {
     const responseTheaters = await cinemaService.getShowTimesInAllTheaters(id, showDateList[0])
     const initialTheaterList = responseTheaters.data
 
-    return { showDateList, initialTheaterList }
+    return { data: { showDateList, initialTheaterList } }
   } catch (error) {
     return error.message
   }
@@ -43,8 +43,8 @@ const getShowDatesByMovieId = async (id) => {
 
 const getShowTimesInAllTheaters = async (movieId, date) => {
   try {
-    const response = await cinemaService.getShowDatesByMovieId(movieId, date)
-    return response.data
+    const response = await cinemaService.getShowTimesInAllTheaters(movieId, date)
+    return response
   } catch (error) {
     return error.message
   }
@@ -56,18 +56,18 @@ const getTheaterSeats = async (theaterId, showTimeId) => {
     const responseBookedSeat = await cinemaService.getBookedSeatByShowTimeId(showTimeId)
 
     const theater = responseTheater.data
-    const bookedSeat = new Set(responseBookedSeat.data)
+    const bookedSeat = responseBookedSeat.data
 
-    return { theater, bookedSeat }
+    return { data: { theater, bookedSeat } }
   } catch (error) {
     return error.message
   }
 }
 
-const createOrder = async () => async (order) => {
+const createOrder = async (order) => {
   try {
     const response = await cinemaService.createOrder(order)
-    return response.data
+    return response
   } catch (error) {
     return error.message
   }

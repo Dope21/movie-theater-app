@@ -2,13 +2,13 @@ import axios from 'axios'
 
 const get = (url, params = {}, headers = {}, config = {}) => axios.get(url, { params, headers, ...config })
 
-const post = (url, params = {}, headers = {}, config = {}) => axios.post(url, { params, headers, ...config })
+const post = (url, data = {}, headers = {}, config = {}) => axios.post(url, data, { headers, ...config })
 
-const put = (url, params = {}, headers = {}, config = {}) => axios.put(url, { params, headers, ...config })
+const put = (url, data = {}, headers = {}, config = {}) => axios.put(url, data, { headers, ...config })
 
-const patch = (url, params = {}, headers = {}, config = {}) => axios.patch(url, { params, headers, ...config })
+const patch = (url, data = {}, headers = {}, config = {}) => axios.patch(url, data, { headers, ...config })
 
-const remove = (url, params = {}, headers = {}, config = {}) => axios.remove(url, { params, headers, ...config })
+const remove = (url, data = {}, headers = {}, config = {}) => axios.remove(url, data, { headers, ...config })
 
 export default {
   get,
