@@ -1,0 +1,49 @@
+services:
+  app:
+    build: ./client
+    working_dir: /usr/src/app
+    volumes:
+      - ./client:/usr/src/app
+    ports:
+      - "3000:3000"
+    env_file:
+      - ./client/.env
+    environment:
+      - NEXT_PUBLIC_API_GATEWAY_URL_SERVER=http://api-gateway:3001
+      - NEXT_PUBLIC_API_GATEWAY_URL_CLIENT=http://localhost:3001
+    command: ['/bin/sh', '-c', 'bun install && bun run dev']
+    depends_on:
+      - api-gateway
+  
+  api-gateway:
+    build: ./graphql
+    working_dir: /usr/src/app
+    volumes:
+      - ./graphql:/usr/src/app
+    ports:
+      - "3001:3001"
+    env_file:
+      - ./graphql/.env
+    environment:
+      - URL_CINEMA_SERVICE=http://api-service:3002/api/v1
+    command: ['/bin/sh', '-c', 'bun install && bun run dev']
+    depends_on:
+      - api-service
+  
+  api-service:
+    build: ./service
+    working_dir: /usr/src/app
+    volumes:
+      - ./service:/usr/src/app
+    ports:
+      - "3002:3002"
+    env_file:
+      - ./service/.env
+    environment:
+      - DATABASE_URL=mongodb://host.docker.internal:27017/cinema
+    command: ['/bin/sh', '-c', 'bun install && bun run dev']
+
+networks:
+  default:
+    name: microservicenetwork
+    external: true

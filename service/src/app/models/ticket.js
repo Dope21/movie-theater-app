@@ -9,7 +9,7 @@ const model = mongoose.model('tickets', ticketSchema)
 const create = (data, options) => model.create(data, options)
 
 const findBookedSeatsByShowTimeId = async (showTimeId) => {
-  const [{ bookedSeats }] = await model.aggregate([
+  const [data] = await model.aggregate([
     { $match: { showAt: stringToObjectId(showTimeId) } },
     { $unwind: '$seats' },
     {
@@ -25,7 +25,8 @@ const findBookedSeatsByShowTimeId = async (showTimeId) => {
       },
     },
   ])
-  return bookedSeats
+
+  return data ? data.bookedSeats : []
 }
 
 export default {

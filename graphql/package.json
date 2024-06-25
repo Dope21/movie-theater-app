@@ -12,7 +12,9 @@
     "lodash": "4.17.*"
   },
   "scripts": {
-    "start": "OVERRIDE_DEFAULT_LOGGER=false && nodemon src/server.js --exec babel-node -e js"
+    "build": "babel -d dist src",
+    "start": "node dist/server.js",
+    "dev": "nodemon src/server.js --exec babel-node -e js"
   },
   "devDependencies": {
     "@babel/cli": "7.24.*",

@@ -8,7 +8,7 @@ const model = mongoose.model('movieshowtimes', movieShowTimeSchema)
 
 const findShowDatesByMovieId = async (movieId) => {
   const [data] = await model.aggregate([
-    { $match: { movieId: stringToObjectId(movieId), date: { $gte: new Date() } } },
+    { $match: { movieId: stringToObjectId(movieId) } },
     {
       $group: {
         _id: '$movieId',
@@ -44,7 +44,7 @@ const findShowTimeInAllTheaters = (movieId, date) => model.aggregate([
     $group: {
       _id: '$theater',
       theaterNumber: { $first: '$theaterInfo.number' },
-      theaterType: { $first: 'theaterInfo.type' },
+      theaterType: { $first: '$theaterInfo.type' },
       startTimes: {
         $push: {
           time: '$startTime',
